@@ -132,7 +132,7 @@ export default function FileSharePage() {
       type: file.type,
     });
 
-    const chunkSize = 64 * 1024;
+const chunkSize = 1024 * 1024; 
     let offset = 0;
 
     const reader = new FileReader();
