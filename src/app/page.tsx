@@ -99,7 +99,7 @@ export default function FileSharePage() {
       socket.emit("join-room", roomId);
       setRoomJoined(true);
     }
-  }, [mode, roomId, roomJoined]);
+  }, [mode, roomJoined]);
 
   // Sender can copy link for receiver
   const getReceiverLink = () => {
