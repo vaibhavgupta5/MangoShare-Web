@@ -515,7 +515,7 @@ const chunkSize = 1024 * 1024;
                       value={roomId}
                       onChange={(e) => {
                         const value = e.target.value.replace(/\D/g, '');
-                        if (value.length <= 6) {
+                        if (value.length === 6) {
                           setRoomId(value);
                         }
                       }}
