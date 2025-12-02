@@ -513,18 +513,26 @@ const chunkSize = 1024 * 1024;
                     <Input
                       placeholder="ENTER_ROOM_CODE"
                       value={roomId}
-                      onChange={(e) => setRoomId(e.target.value)}
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/\D/g, '');
+                        if (value.length <= 6) {
+                          setRoomId(value);
+                        }
+                      }}
                       className="input-neon font-mono bg-background/50"
+                      maxLength={6}
+                      type="text"
+                      inputMode="numeric"
                     />
                     <Button
                       onClick={() => {
-                        if (roomId) {
+                        if (roomId && roomId.length === 6) {
                           socket.emit("join-room", roomId);
                           setRoomJoined(true);
                           toast.success("Connected to room!");
                         }
                       }}
-                      disabled={!roomId}
+                      disabled={!roomId || roomId.length !== 6}
                       className="w-full btn-neon font-mono cursor-pointer"
                     >
                       CONNECT_TO_ROOM
