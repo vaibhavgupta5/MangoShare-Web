@@ -515,8 +515,15 @@ const chunkSize = 1024 * 1024;
                       value={roomId}
                       onChange={(e) => {
                         const value = e.target.value.replace(/\D/g, '');
-                        if (value.length === 6) {
+                        if (value.length <= 6) {
                           setRoomId(value);
+                        }
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && roomId && roomId.length === 6) {
+                          socket.emit("join-room", roomId);
+                          setRoomJoined(true);
+                          toast.success("Connected to room!");
                         }
                       }}
                       className="input-neon font-mono bg-background/50"
