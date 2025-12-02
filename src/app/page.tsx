@@ -519,13 +519,13 @@ const chunkSize = 1024 * 1024;
                           setRoomId(value);
                         }
                       }}
-                      // onKeyDown={(e) => {
-                      //   if (e.key === 'Enter' && roomId && roomId.length === 6) {
-                      //     socket.emit("join-room", roomId);
-                      //     setRoomJoined(true);
-                      //     toast.success("Connected to room!");
-                      //   }
-                      // }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && roomId && roomId.length === 6) {
+                          socket.emit("join-room", roomId);
+                          setRoomJoined(true);
+                          toast.success("Connected to room!");
+                        }
+                      }}
                       className="input-neon font-mono bg-background/50"
                       maxLength={6}
                       type="text"
